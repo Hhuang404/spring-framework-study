@@ -137,9 +137,12 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 	public ClassPathXmlApplicationContext(
 			String[] configLocations, boolean refresh, @Nullable ApplicationContext parent)
 			throws BeansException {
-
+		// 将输入的配置文件地址赋值给 父类 的 configLocations 属性
+		// org.springframework.util.PropertyPlaceholderHelper.parseStringValue
+		// 支持 classpath:config.xml 的写法
 		super(parent);
 		setConfigLocations(configLocations);
+
 		if (refresh) {
 			refresh();
 		}
